@@ -15,7 +15,7 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    if (count === 0){
+    if (count === 0) {
       return undefined;
     }
 

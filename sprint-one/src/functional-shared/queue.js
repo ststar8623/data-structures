@@ -15,7 +15,7 @@ var queueMethods = {
     this.count++;
   },
   dequeue: function() {
-    if (this.count - this.lowestCount === 0){
+    if (this.count - this.lowestCount === 0) {
       return undefined;
     }
 
