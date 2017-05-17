@@ -16,7 +16,7 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    if(count - lowestCount === 0){
+    if (count - lowestCount === 0){
       return undefined;
     }
     // Save node to delete in variable

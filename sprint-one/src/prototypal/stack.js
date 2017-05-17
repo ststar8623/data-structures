@@ -12,7 +12,7 @@ var stackMethods = {
     this.count++;
   },
   pop: function() {
-    if(this.count === 0){
+    if (this.count === 0){
       return undefined;
     }
     this.count--;
