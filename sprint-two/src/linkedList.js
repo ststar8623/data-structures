@@ -29,7 +29,7 @@ var LinkedList = function() {
       } else if (node.next !== null) {
         return findTarget(node.next);
       }
-    }
+    };
     findTarget(list.head);
     return result;
   };
