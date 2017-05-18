@@ -25,7 +25,7 @@ treeMethods.contains = function(target) {
       } else if (child.children !== []) {
         return findTarget(child.children);
       }
-    })
+    });
   };
   findTarget(this.children);
   return result;
