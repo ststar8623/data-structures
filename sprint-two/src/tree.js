@@ -15,19 +15,17 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   var result = false;
-  if(this.value === target){
+  if (this.value === target) {
     result = true;
   }
   var findTarget = function(children) {
-    for (let i = 0; i < children.length; i++) {
-      if (children[i].value === target) {
+    children.forEach(child => {
+      if (child.value === target) {
         result = true;
-        return;
-      } else if (children[i].children !== []) {
-        let child = children[i];
-        findTarget(child.children);
+      } else if (child.children !== []) {
+        return findTarget(child.children);
       }
-    }
+    })
   };
   findTarget(this.children);
   return result;
