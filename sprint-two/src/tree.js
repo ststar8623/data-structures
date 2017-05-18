@@ -10,12 +10,14 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var child = new Tree(value);
-  this.children.push(child);
+  this.children.push(Tree(value));
 };
 
 treeMethods.contains = function(target) {
   var result = false;
+  if(this.value === target){
+    result = true;
+  }
   var findTarget = function(children) {
     for (let i = 0; i < children.length; i++) {
       if (children[i].value === target) {
@@ -36,7 +38,7 @@ tree.addChild(5);
 tree.addChild(6);
 tree.children[0].addChild(7);
 tree.children[1].addChild(8);
-console.log(tree.contains(8));
+console.log(tree.contains(1));
 console.log(tree);
 /*
  * Complexity: What is the time complexity of the above functions?
