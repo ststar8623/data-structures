@@ -7,37 +7,45 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var bucket = this._storage[index];
+  var bucket = this._storage.get(index);
   var overRide = false;
-  if (!bucket) {
-    bucket = [];
-    this._storage[index] = bucket;
+
+  // if bucket isn't an array, set 
+  if (!Array.isArray(bucket)) {
+    this._storage.set(index, []);
   }
 
-  bucket.forEach(el => {
-    if (el[0] === k) {
-      el[1] = v;
-      overRide = true;
-    }
-  });
+  // overwrite value with same key, set overRide to 'TRUE'
+  if (Array.isArray(bucket)) {
+    bucket.forEach(tuple => {
+      if (tuple[0] === k) {
+        tuple[1] = v;
+        overRide = true;
+      }
+    });
+  }
 
+  // if overRide is 'FALSE', push a tuple in
+  var tuple = [k, v];
   if (!overRide) {
-    bucket.push([k, v]);
+    this._storage.get(index).push(tuple);
   }
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  let bucket = this._storage[index];
+  var bucket = this._storage.get(index);
 
+  // if bucket doens't exit, return undefined;
   if (!bucket) {
     return undefined;
   }
 
+  // loop through each tuple to search the value
   for (let i = 0; i < bucket.length; i++) {
-    let el = bucket[i];
-    if (el[0] === k) {
-      return el[1];
+    var tuple = bucket[i];
+    if (tuple[0] === k){
+      return tuple[1];
     }
   }
 
@@ -46,25 +54,19 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  let bucket = this._storage[index];
+  let bucket = this._storage.get(index);
 
+  // if bucket isn't found, return undefined
   if (!bucket) {
     return undefined;
   }
 
-  bucket.forEach(el => {
-    if (el[0] === k) {
-      bucket.splice(el, 1);
-      return el[1];
+  // loop through tuple to remove tuple if its found
+  bucket.forEach(tuples => {
+    if (tuples[0] === k) {
+      bucket.splice(tuples, 1);
     }
   });
-  // for (let i = 0; i < bucket.length; i++) {
-  //   let el = bucket[i];
-  //   if (el[0] === k) {
-  //     bucket.splice(i, 1);
-  //   }
-  //   return el[1];
-  // }
 
   return undefined;
 };
