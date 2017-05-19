@@ -13,7 +13,7 @@ setPrototype.add = function(item) {
 setPrototype.contains = function(item) {
   let result = false;
   this._storage.forEach( el => {
-    if (el === item){
+    if (el === item) {
       result = true;
     }
   });
