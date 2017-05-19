@@ -16,7 +16,7 @@ Graph.prototype.addNode = function(node) {
 Graph.prototype.contains = function(node) {
   return _.some(this.node, nodes => {
     return nodes === node;
-  })
+  });
 };
 
 // Removes a node from the graph.
@@ -35,7 +35,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
     return nodes === toNode;
   });
 
-  return from === true && to === true;
+  return from && to;
 };
 
 // Connects two nodes in a graph by adding an edge between them.
@@ -49,8 +49,8 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
   var indexFrom = this.edge[fromNode] ? this.edge[fromNode].indexOf(toNode) : - 1;
   var indexTo = this.edge[toNode] ? this.edge[toNode].indexOf(fromNode) : -1;
   
-  this.edge[toNode].splice(indexFrom,1);
-  this.edge[fromNode].splice(indexTo,1);
+  this.edge[toNode].splice(indexFrom, 1);
+  this.edge[fromNode].splice(indexTo, 1);
 };
 
 // Pass in a callback which will be executed on each node of the graph.

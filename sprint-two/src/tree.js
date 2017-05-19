@@ -14,10 +14,11 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  var result = false;
+  let result = false;
   if (this.value === target) {
     result = true;
   }
+
   var findTarget = function(children) {
     children.forEach(child => {
       if (child.value === target) {
@@ -27,17 +28,11 @@ treeMethods.contains = function(target) {
       }
     });
   };
+
   findTarget(this.children);
   return result;
 };
 
-var tree = new Tree(1);
-tree.addChild(5);
-tree.addChild(6);
-tree.children[0].addChild(7);
-tree.children[1].addChild(8);
-console.log(tree.contains(1));
-console.log(tree);
 /*
  * Complexity: What is the time complexity of the above functions?
  O(n)

@@ -20,17 +20,30 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    let result = false;
-    var findTarget = function(node) {
-      if (node.value === target) {
-        result = true;
-        return;
-      } else if (node.next !== null) {
-        return findTarget(node.next);
+    // let result = false;
+    // var findTarget = function(node) {
+    //   if (node.value === target) {
+    //     result = true;
+    //     return;
+    //   } else if (node.next !== null) {
+    //     return findTarget(node.next);
+    //   }
+    // };
+    // findTarget(list.head);
+    // return result;
+    var node = list.head;
+    if (node.value === target) {
+      return true;
+    }
+    while(node.next) {
+      if (node.next.value === target) {
+        return true;
+      } else {
+        node = node.next;
       }
-    };
-    findTarget(list.head);
-    return result;
+    }
+    return false;
+
   };
 
   return list;
