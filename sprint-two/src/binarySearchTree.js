@@ -49,7 +49,7 @@ tree.contains = function(value) {
 tree.depthFirstLog = function(callback) {
   var array = [];
   array.push(this);
-  while (array.length) {
+  do {
     var node = array.shift();
     if (node.value) {
       callback(node.value);
@@ -60,41 +60,10 @@ tree.depthFirstLog = function(callback) {
     if (node.right) {
       array.push(node.right);
     }
-  }
+  } while (array.length);
 };
 
-var array = [];
-var func = (val) => { array.push(val); };
-var binarySearchTree = BinarySearchTree(5);
-binarySearchTree.insert(2);
-binarySearchTree.insert(3);
-binarySearchTree.insert(7);
-binarySearchTree.insert(10);
-binarySearchTree.insert(1);
-binarySearchTree.contains(7);
-
-console.log(binarySearchTree);
 /*
  * Complexity: What is the time complexity of the above functions?
+ O(log(n))
  */
-
-
-// { value: 5, 
-//   left: { 
-//     value: 2, 
-//     left: null, 
-//     right: { 
-//       value: 3, 
-//       left: null, 
-//       right: null 
-//     }, 
-//   right: { 
-//     value: 7, 
-//     left: { 
-//       value: 6, 
-//       left: null, 
-//       right: null 
-//     }, 
-//     right: null 
-//   } 
-// }
