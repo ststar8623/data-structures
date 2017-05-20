@@ -15,40 +15,40 @@ var LinkedList = function() {
 
 LinkedList.prototype.addToTail = function(value) {
   var node = new Node(value);
-  if (!list.tail) {
-    list.tail = list.head = node;
+  if (!this.tail) {
+    this.tail = this.head = node;
   } else {
-    list.tail.next = node;
-    node.previous = list.tail;
-    list.tail = node;
+    this.tail.next = node;
+    node.previous = this.tail;
+    this.tail = node;
   }
 };
 
 LinkedList.prototype.addToHead = function(value) {
   var node = new Node(value);
-  if (!list.head) {
-    return list.addToTail(node);
+  if (!this.head) {
+    return this.addToTail(node);
   } else {
-    list.head.previous = node;
-    node.next = list.head;
-    list.head = node;
+    this.head.previous = node;
+    node.next = this.head;
+    this.head = node;
   }
 };
 
 LinkedList.prototype.removeTail = function() {
-  var current = list.tail;
-  list.tail = list.tail.previous;
+  var current = this.tail;
+  this.tail = this.tail.previous;
   return current.value;
 };
 
 LinkedList.prototype.removeHead = function() {
-  var current = list.head;
-  list.head = list.head.next;
+  var current = this.head;
+  this.head = this.head.next;
   return current.value;
 };
 
 LinkedList.prototype.contains = function(target) {
-  var node = list.head;
+  var node = this.head;
   if (node.value === target) {
     return true;
   }
@@ -62,12 +62,12 @@ LinkedList.prototype.contains = function(target) {
   return false;
 };
 
-var list = new LinkedList();
-list.addToTail(8);
-list.addToHead(1);
-list.addToTail(7);
+var linkedList = new LinkedList();
+linkedList.addToTail(8);
+linkedList.addToHead(1);
+linkedList.addToTail(7);
 
-console.log(list);
+console.log(linkedList);
 /*
  * Complexity: What is the time complexity of the above functions?
  O(n)
