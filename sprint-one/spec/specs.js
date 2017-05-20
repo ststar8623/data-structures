@@ -69,6 +69,29 @@ define([
         expect(stack.pop()).to.equal('b');
       });
 
+      it('push 10 items in and removing it each at a time', function() {
+        stack.push('a');
+        stack.push('b');
+        stack.push('c');
+        stack.push('d');
+        stack.push('e');
+        stack.push('f');
+        stack.push('g');
+        stack.push('h');
+        stack.push('i');
+        stack.push('j');
+        expect(stack.pop()).to.equal('j');
+        expect(stack.pop()).to.equal('i');
+        expect(stack.pop()).to.equal('h');
+        expect(stack.pop()).to.equal('g');
+        expect(stack.pop()).to.equal('f');
+        expect(stack.pop()).to.equal('e');
+        expect(stack.pop()).to.equal('d');
+        expect(stack.pop()).to.equal('c');
+        expect(stack.pop()).to.equal('b');
+        expect(stack.pop()).to.equal('a');
+      });
+
     });
 
     describe('stack-specific behavior', function() {

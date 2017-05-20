@@ -36,4 +36,21 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+  it('execute a callback on every value in a tree', function() {
+    var obj = {};
+    var func = function(value) { obj[value] = value; };
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(10);
+    binarySearchTree.depthFirstLog(func);
+    expect(obj).to.eql({'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10});
+  });
 });
