@@ -44,7 +44,7 @@ HashTable.prototype.retrieve = function(k) {
   // loop through each tuple to search the value
   for (let i = 0; i < bucket.length; i++) {
     var tuple = bucket[i];
-    if (tuple[0] === k){
+    if (tuple[0] === k) {
       return tuple[1];
     }
   }
