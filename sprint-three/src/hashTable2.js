@@ -1,5 +1,5 @@
 var HashTable = function(size) {
-  this._limit = size;
+  this._limit = size || 4;
   this._storage = [];
   this._size = 0;
 };
@@ -129,7 +129,7 @@ var getIndexBelowMaxForKey = function(str, max) {
   return hash % max;
 };
 
-var table = new HashTable(10);
+var table = new HashTable();
 table.insert('steven', 'leung');
 table.insert('leung', 'steven');
 table.insert('wow', 'omg');
@@ -137,24 +137,12 @@ table.insert('hi', 'bye');
 table.insert('yeah', 1);
 table.insert('1', 1);
 table.insert('2', 2);
-table.insert('3', 3);
-table.insert('6', 8);
-table.insert('7', 19);
-table.insert('12', 234);
-table.insert('123',234);
-table.insert('234', 234);
-table.insert('234324', 32423);
-table.insert('34234234', 234234);
-table.insert('23423315', 23453245);
-table.insert('23423', 2342342);
+
 table.remove('23423');
 table.remove('yeah');
 table.remove('steven');
 table.remove('wow');
 table.remove('yeah');
-table.remove('1');
-table.remove('leung');
-table.remove('2');
 
 console.log(table);
 /*
